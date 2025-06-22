@@ -25,41 +25,43 @@ const Acc = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-700 to-blue-500 p-4 overflow-hidden">
-      <div className="bg-white rounded shadow-lg flex flex-col gap-6 p-6 w-full max-w-[500px]">
-        
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="border rounded shadow-lg text-center flex flex-col gap-8 p-5 min-w-[300px] bg-white">
+
         <div
-          className="bg-yellow-400 rounded p-3 cursor-pointer hover:bg-yellow-500 transition"
+          className="bg-blue-500 rounded p-3 flex justify-center min-w-[300px] cursor-pointer hover:bg-blue-600 transition"
           onClick={Togglemode}
         >
-          <h1 className="text-xl font-bold text-gray-800">
-            {multiple ? "Enable Multiple Section" : "Enable Single Section"}
-          </h1>
+          {multiple ? (
+            <h1 className="text-xl font-semibold text-white w-full">
+              Enable Multiple Section
+            </h1>
+          ) : (
+            <h1 className="text-xl font-semibold text-white w-full">
+              Enable Single Section
+            </h1>
+          )}
         </div>
 
         <div className="flex flex-col gap-4">
           {data.map((item) => {
-            const isVisible = multiple
-              ? answer.includes(item.id)
-              : answer === item.id;
-
             return (
               <div
+                className="bg-gray-800 text-white grid grid-cols-1 mb-2 w-full max-w-[500px] rounded p-4 hover:bg-gray-700 transition"
                 key={item.id}
-                className="bg-gray-800 text-white rounded p-4 transition transform hover:scale-105"
               >
-                <h2 className="text-lg font-semibold mb-2">{item.question}</h2>
-
-                <p
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isVisible ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  {item.answer}
+                <h2 className="text-lg font-bold mb-2">{item.question}</h2>
+                <p className="min-h-[40px] px-3 text-sm">
+                  {multiple
+                    ? answer.includes(item.id)
+                      ? item.answer
+                      : null
+                    : answer === item.id
+                      ? item.answer
+                      : null}
                 </p>
-
                 <button
-                  className="mt-2 bg-yellow-500 text-black rounded px-3 py-1 hover:bg-yellow-600 transition cursor-pointer"
+                  className="mt-2 bg-yellow-400 text-black font-medium rounded px-3 py-1 hover:bg-yellow-500 transition"
                   onClick={
                     !multiple
                       ? () => showanswer(item.id)
@@ -72,6 +74,7 @@ const Acc = () => {
             );
           })}
         </div>
+
       </div>
     </div>
   );
