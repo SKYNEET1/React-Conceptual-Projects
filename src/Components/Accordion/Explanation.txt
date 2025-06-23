@@ -1,0 +1,49 @@
+📌 What happens when you click Single Mode (default mode)
+👉 When the component loads, multiple is false by default → so it starts in single mode.
+👉 answer is null initially → no answers are shown.
+
+✅ When you click the button for a question:
+
+The showanswer(id) function runs.
+
+It checks: Is this ID already selected (i.e., answer === id)?
+
+If yes → deselect it by setting answer = null.
+
+If no → select it by setting answer = id.
+
+👉 The JSX checks: answer === item.id ? item.answer : null
+
+It shows the answer only for that one selected question.
+
+Clicking the same button again will hide the answer.
+
+⚡ Single mode ensures only one answer can be visible at a time.
+
+📌 What happens when you click to switch to Multiple Mode
+👉 When you click the mode toggle button:
+
+The Togglemode function runs.
+
+It flips multiple to true.
+
+It resets answer to an empty array ([]) → so no answers are shown initially.
+
+✅ Now when you click a button for a question:
+
+The showmultipelans(id) function runs.
+
+It checks: Is this ID already in the answer array?
+
+If yes → remove it from the array → that answer will hide.
+
+If no → add it to the array → that answer will show.
+
+👉 The JSX checks: answer.includes(item.id) ? item.answer : null
+
+It shows the answers for all IDs that are present in the answer array.
+
+You can show/hide multiple answers independently.
+
+⚡ Multiple mode lets you display answers for many questions at once.
+

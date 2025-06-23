@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Acc from './Components/Accordion/Acc'
 import Randomcol from './Components/RandomCol/Randomcol'
+import StarRating from './Components/StarRating/StarRating'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,8 +13,8 @@ function App() {
     
       <div>
         <Acc/>
-        {/* Accordion */}
-       <Randomcol/>
+        <Randomcol/>
+        <StarRating noOfStars={10}/>
       </div>
      
   )
